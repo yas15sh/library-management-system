@@ -12,22 +12,30 @@ app.use(express.static("public"));
 app.get("/", (req, res) => {
     res.render("login");
 });
-app.post("/login", (req, res) => {
+let userRole = "user";
 
-    const username = req.body.username;
-    const password = req.body.password;
+app.post("/login",(req,res)=>{
 
-    if(username === "admin" && password === "1111"){
-        userRole = "admin";
-        res.redirect("/home");
-    }
-    else{
-        userRole = "user";
-        res.redirect("/home");
-    }
+const username = req.body.username;
+const password = req.body.password;
+
+if(username === "adm" && password === "adm"){
+    userRole = "admin";
+    res.redirect("/home");
+}
+
+else if(username === "user" && password === "user"){
+    userRole = "user";
+    res.redirect("/home");
+}
+
+else{
+    res.send("Invalid Username or Password");
+}
 
 });
 
+   
 app.get("/home",(req,res)=>{
     res.render("home");
 });
@@ -80,6 +88,31 @@ app.get("/pay-fine",(req,res)=>{
 
 app.get("/search-book",(req,res)=>{
     res.render("searchBook");
+
+});
+
+app.get("/active-issues",(req,res)=>{
+res.send("Active Issues Report");
+});
+
+app.get("/membership-list",(req,res)=>{
+res.send("Membership Report");
+});
+
+app.get("/movies-list",(req,res)=>{
+res.send("Movies Report");
+});
+
+app.get("/books-list",(req,res)=>{
+res.send("Books Report");
+});
+
+app.get("/overdue-returns",(req,res)=>{
+res.send("Overdue Returns Report");
+});
+
+app.get("/pending-requests",(req,res)=>{
+res.send("Pending Requests Report");
 });
 
 app.listen(3000,()=>{
