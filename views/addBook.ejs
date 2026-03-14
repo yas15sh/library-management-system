@@ -1,23 +1,29 @@
-<h2>Add Book</h2>
-
-<form>
-
-<label>Select Type</label>
-
-<select>
-<option>Book</option>
-<option>Movie</option>
-</select>
+<form onsubmit="return validateForm()">
 
 <label>Title</label>
-<input type="text" required>
+<input type="text" id="title">
 
 <label>Author</label>
-<input type="text" required>
-
-<label>Serial Number</label>
-<input type="text" required>
+<input type="text" id="author">
 
 <button type="submit">Submit</button>
 
 </form>
+
+<p id="error" style="color:red"></p>
+
+<script>
+function validateForm(){
+
+let title = document.getElementById("title").value;
+let author = document.getElementById("author").value;
+
+if(title === "" || author === ""){
+document.getElementById("error").innerText =
+"Please fill all required fields";
+
+return false;
+}
+
+}
+</script>
