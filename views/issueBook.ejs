@@ -1,0 +1,40 @@
+<h2>Issue Book</h2>
+
+<form>
+
+<label>Book Name</label>
+<input type="text" required>
+
+<label>Author</label>
+<input type="text" value="Auto Filled" readonly>
+
+<label>Serial Number</label>
+<input type="text" required>
+
+<label>Issue Date</label>
+<input type="date" id="issueDate" readonly>
+
+<label>Return Date</label>
+<input type="date" id="returnDate">
+
+<label>Remarks</label>
+<textarea></textarea>
+
+<button type="submit">Issue Book</button>
+
+</form>
+
+<script>
+
+let today = new Date();
+let returnDate = new Date();
+
+returnDate.setDate(today.getDate() + 15);
+
+document.getElementById("issueDate").value =
+today.toISOString().split("T")[0];
+
+document.getElementById("returnDate").value =
+returnDate.toISOString().split("T")[0];
+
+</script>

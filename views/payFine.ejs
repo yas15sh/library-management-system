@@ -1,0 +1,34 @@
+<h2>Pay Fine</h2>
+
+<label>Return Date</label>
+<input type="date" id="returnDate">
+
+<label>Fine Amount</label>
+<input type="number" id="fine" readonly>
+
+<label>Fine Paid</label>
+<input type="checkbox">
+
+<button onclick="calculateFine()">Calculate Fine</button>
+
+<script>
+
+function calculateFine(){
+
+let today = new Date();
+
+let returnDate = new Date(
+document.getElementById("returnDate").value
+);
+
+let diff = Math.ceil(
+(today - returnDate)/(1000*60*60*24)
+);
+
+let fine = diff > 0 ? diff * 10 : 0;
+
+document.getElementById("fine").value = fine;
+
+}
+
+</script>
