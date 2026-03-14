@@ -8,33 +8,35 @@
 <label>Author</label>
 <input type="text" value="Auto Filled" readonly>
 
-<label>Serial Number</label>
-<input type="text" required>
-
 <label>Issue Date</label>
-<input type="date" id="issueDate" readonly>
+<input type="date" id="issueDate" required>
 
 <label>Return Date</label>
 <input type="date" id="returnDate">
 
 <label>Remarks</label>
-<textarea></textarea>
+<input type="text">
 
-<button type="submit">Issue Book</button>
+<button>Submit</button>
 
 </form>
 
 <script>
 
-let today = new Date();
-let returnDate = new Date();
+let today = new Date().toISOString().split("T")[0];
+document.getElementById("issueDate").min = today;
 
-returnDate.setDate(today.getDate() + 15);
+document.getElementById("issueDate").addEventListener("change", function(){
 
-document.getElementById("issueDate").value =
-today.toISOString().split("T")[0];
+let issue = new Date(this.value);
+
+let returnDate = new Date(issue);
+
+returnDate.setDate(issue.getDate()+15);
 
 document.getElementById("returnDate").value =
 returnDate.toISOString().split("T")[0];
+
+});
 
 </script>
