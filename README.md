@@ -1,110 +1,224 @@
 # 📚 Library Management System
 
-A simple Library Management System prototype built as part of a technical assignment.
-
-The system allows users to manage books, memberships, and fine payments with validation rules according to the provided requirements.
-
----
-
-## 🚀 Features
-
-### Issue Book
-- Book name required
-- Author auto-populated and non-editable
-- Issue date auto-filled with today's date
-- Return date automatically set to 15 days ahead
-- Return date cannot exceed 15 days
-- Remarks optional
-
-### Return Book
-- Book name required
-- Author auto-populated
-- Serial number mandatory
-- Issue date auto-filled and non-editable
-- Confirm return redirects to Pay Fine page
-
-### Pay Fine
-- Displays calculated fine amount
-- Fine calculated based on late return
-- If fine exists, user must confirm fine payment
-- Transaction completes after confirmation
-
-### Membership Management
-- Add membership
-- Duration options:
-  - 6 months (default)
-  - 1 year
-  - 2 years
-- All fields mandatory
-
-### Book Management
-- Add Book / Movie
-- All fields mandatory
-- Validation for missing inputs
-
-### User Management
-- New user creation
-- Existing user management
-- Name is mandatory
+A **Library Management System** built using **Node.js, Express.js, and EJS** that follows a modular architecture based on **Maintenance, Reports, and Transactions modules**.
+The system allows users and administrators to manage library operations such as adding books, issuing books, returning books, and handling fines.
 
 ---
 
-## 🛠 Tech Stack
+# 🚀 Features
 
-- Node.js
-- Express.js
-- EJS
-- HTML/CSS
-- JavaScript
+### 🔐 Login System
+
+* Two types of users:
+
+  * **Admin**
+  * **User**
+* Password field is hidden while typing.
+* After login, users are redirected to the **Category of Books (Dashboard)**.
 
 ---
 
-## 📂 Project Structure
+# 🧭 Application Flow
+
+The system follows the structure defined in the project flowchart.
+
+```
+Start
+ ↓
+Login Screen
+ ↓
+Category of Books (Dashboard)
+ ↓
+Maintenance | Reports | Transactions
+```
+
+---
+
+# 🛠 Maintenance Module (Admin Access Only)
+
+This module allows administrators to manage books and memberships.
+
+Functions included:
+
+* Add Membership
+* Update Membership
+* Add Book / Movie
+* Update Book / Movie
+
+Maintenance operations help maintain library records.
+
+---
+
+# 📊 Reports Module (User & Admin Access)
+
+The reports module provides information about library activity.
+
+Available reports:
+
+* Active Issues
+* Master List of Memberships
+* Master List of Movies
+* Master List of Books
+* Overdue Returns
+* Pending Issues Requests
+
+These reports help track library operations.
+
+---
+
+# 🔄 Transactions Module (User & Admin Access)
+
+Handles day-to-day library activities.
+
+Functions included:
+
+* Check Book Availability
+* Issue Book
+* Return Book
+* Fine Payment
+
+### Transaction Flow
+
+```
+Check Book Availability
+ ↓
+Issue Book
+ ↓
+Return Book
+ ↓
+Fine Payment (if applicable)
+```
+
+---
+
+# 📅 Issue Book Rules
+
+When issuing a book:
+
+* Book name is required
+* Author name is automatically populated
+* Issue date **cannot be earlier than today's date**
+* Return date is automatically set to **15 days after issue date**
+* Remarks are optional
+
+---
+
+# 📦 Return Book Rules
+
+When returning a book:
+
+* Book name is required
+* Author name auto populated
+* Serial number required
+* Issue date auto populated
+* Return date can be adjusted if necessary
+
+After confirming return, the user is redirected to **Fine Payment**.
+
+---
+
+# 💰 Fine Payment
+
+Fine payment is required if the book is returned late.
+
+Fields include:
+
+* Book Name
+* Member Name
+* Fine Amount
+* Fine Paid checkbox
+* Remarks
+
+If a fine exists, the user must check **Fine Paid** before completing the return.
+
+---
+
+# 🖥 Technologies Used
+
+* **Node.js**
+* **Express.js**
+* **EJS (Embedded JavaScript Templates)**
+* **HTML**
+* **CSS**
+
+---
+
+# 📁 Project Structure
+
+```
 library-management-system
 │
 ├── server.js
 ├── package.json
+├── README.md
 │
-├── views
-│ ├── home.ejs
-│ ├── issueBook.ejs
-│ ├── returnBook.ejs
-│ ├── payFine.ejs
-│ ├── addMembership.ejs
-│ └── addBook.ejs
+├── public
+│   └── style.css
 │
-└── public
-└── style.css  
+└── views
+    ├── login.ejs
+    ├── home.ejs
+    ├── maintenance.ejs
+    ├── reports.ejs
+    ├── transactions.ejs
+    │
+    ├── addBook.ejs
+    ├── updateBook.ejs
+    │
+    ├── addMembership.ejs
+    ├── updateMembership.ejs
+    │
+    ├── issueBook.ejs
+    ├── returnBook.ejs
+    ├── payFine.ejs
+    └── checkAvailability.ejs
+```
 
 ---
 
-## ▶️ How to Run
+# ▶️ How to Run the Project
 
-1. Clone the repository
+### 1️⃣ Clone the Repository
+
+```
 git clone https://github.com/yas15sh/library-management-system.git
+```
 
+### 2️⃣ Navigate to the Project Folder
 
+```
+cd library-management-system
+```
 
+### 3️⃣ Install Dependencies
 
-2. Install dependencies
-
-
+```
 npm install
+```
 
+### 4️⃣ Run the Server
 
-3. Run the server
-
-
+```
 node server.js
+```
 
+### 5️⃣ Open in Browser
 
-4. Open in browser
-
-
+```
 http://localhost:3000
+```
 
+
+
+GitHub:
+https://github.com/yas15sh
 
 ---
+
+# 📄 License
+
+This project is developed for **educational purposes** as part of a technical assignment.
+
 
 ## ⚙️ Assumptions
 
